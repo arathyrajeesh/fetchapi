@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        fetch('https://fakestoreapi.com/products/1')
+        .then(response => response.json())
+        .then(items => alert(items));
+    </script>
 </body>
 </html>
