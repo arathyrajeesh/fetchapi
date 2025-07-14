@@ -8,20 +8,5 @@
 <body>
     <input id="price" type="text" placeholder="enter price">
     <button type="submit" onclick="updateProduct()">update Product</button>
-    <script>
-        const updateProduct = ()=> {
-            const priceInput=document.getElementById('price').value;
-            fetch('https://fakestoreapi.com/products/1', {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json',},
-            body: JSON.stringify({
-                price: priceInput,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => alert('User updated:', data.price))
-        .catch(error => alert('Error updating user:', error));
-}
-    </script>
 </body>
 </html>
