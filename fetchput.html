@@ -9,5 +9,26 @@
     <input id="id" type="text" placeholder="enter id">
     <input id="price" type="text" placeholder="enter price">
     <button type="submit" onclick="updateProduct()">update Product</button>
+    <script>
+        const updateProduct = ()=> {
+            const idInput=document.getElementById('id').value;
+            const priceInput=document.getElementById('price').value;
+            fetch('https://fakestoreapi.com/products/1', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title:idInput,
+                    price:priceInput,
+                }),
+        })
+        .then(response => response.json())
+                .then(data => {
+                    alert('user updated:',data.title)
+                })
+                .catch(error => {
+                    alert("Error:", error);
+                });
+            }
+        </script>
 </body>
 </html>
