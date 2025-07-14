@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        align-items: center;
+    }
+</style>
+<body>
+        <input id="name" type="text" placeholder="title">
+        <input id="price" type="text" placeholder="price"><br>
+        <button type="submit" onclick="addProduct()">Add Product</button>
+    <script>
+        const addProduct = ()=> {
+            const nameInput=document.getElementById('name').value;
+            const priceInput=document.getElementById('price').value;
+            fetch('https://fakestoreapi.com/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title:nameInput,
+                    price:priceInput,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.title)
+            })
+            .catch(error => {
+                alert("Error:", error);
+            });
+        }
+    </script>
+</body>
+</html>
